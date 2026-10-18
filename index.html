@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор чемпиона F1 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Разделы"><a href="index.html" aria-current="page">Калькулятор</a><a href="seasons.html">Сезоны</a><a href="about.html">О нас</a><a href="contacts.html">Обратная связь</a></nav>
+    <h1>Кто может стать чемпионом F1 2026</h1>
+    <p id="verdict" class="verdict"></p>
+    <p class="src">Очки пилотов: после Гран-при Сингапура (17 этапов из 23). Все значения можно менять.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <aside class="panel">
+    <h2>Шкала очков</h2>
+    <p class="hint">Гонка, места 1–10</p>
+    <div id="raceScale" class="scale"></div>
+    <p class="hint">Спринт, места 1–8</p>
+    <div id="sprintScale" class="scale"></div>
+
+    <h2>Календарь</h2>
+    <label>Гонок осталось <input type="number" id="nGP" min="0" max="24" value="6"></label>
+    <label>Из них со спринтом <input type="number" id="nSP" min="0" max="24" value="0"></label>
+    <label>Этапов уже проведено <input type="number" id="done" min="1" max="30" value="17"></label>
+
+    <h2>Модель вероятности</h2>
+    <label>Шанс схода за гонку, % <input type="number" id="dnf" min="0" max="60" value="8"></label>
+    <label>Влияние формы <input type="range" id="alpha" min="0.5" max="4" step="0.1" value="2.2"><output id="alphaOut">2,2</output></label>
+
+    <button id="live" type="button">Загрузить очки с сайта</button>
+    <button id="reset" type="button" class="ghost">Сбросить</button>
+    <p id="status" class="hint" role="status"></p>
+  </aside>
+
+  <main>
+    <section>
+      <h2>Борьба за титул</h2>
+      <p class="hint">Тёмная часть полосы — очки сейчас, светлая — максимум, который пилот ещё может набрать. Вертикальная линия — очки лидера: если светлая часть до неё не дотягивает, пилот вне борьбы.</p>
+      <div id="board" class="board"></div>
+    </section>
+    <section>
+      <h2>Пилоты 2026</h2>
+      <p class="hint">Нажмите на фото пилота: откроются данные сезона, а в списке можно выбрать другой сезон.</p>
+      <div id="cards" class="cards"></div>
+    </section>
+    <section>
+      <h2>Расчёт</h2>
+      <div id="math" class="math"></div>
+    </section>
+  </main>
+</div>
+<dialog id="dlg" aria-labelledby="dName">
+  <button type="button" id="dClose" class="x" aria-label="Закрыть">×</button>
+  <div class="dhead"><img id="dImg" alt="" width="96" height="96"><div><h3 id="dName"></h3><p id="dTeam" class="hint"></p></div></div>
+  <label>Сезон <select id="yr"></select></label>
+  <div id="stat" class="stat" role="status"></div>
+  <p id="bio" class="hint"></p>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>

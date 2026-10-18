@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обратная связь — F1 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="head"><div class="wrap"><nav class="nav" aria-label="Разделы"><a href="index.html">Калькулятор</a><a href="seasons.html">Сезоны</a><a href="about.html">О нас</a><a href="contacts.html" aria-current="page">Обратная связь</a></nav><h1>Обратная связь</h1></div></header>
+<div class="wrap page">
+<table class="info">
+<tr><td>Автор</td><td>Демин К. Д.</td></tr>
+<tr><td>Email</td><td><a href="mailto:resumebot@example.com">resumebot@example.com</a></td></tr>
+<tr><td>Университет</td><td>ВГУ, факультет компьютерных наук</td></tr>
+</table>
+<h2>Написать нам</h2>
+<form class="feedback" id="fb">
+  <p><label for="name">Ваше имя:</label><br><input type="text" id="name" required></p>
+  <p><label for="email">Email:</label><br><input type="email" id="email" required></p>
+  <p><label for="message">Сообщение:</label><br><textarea id="message" rows="6" required></textarea></p>
+  <input type="submit" value="Отправить">
+  <p id="ok" class="hint" role="status"></p>
+</form>
+</div>
+<footer class="foot"><div class="wrap">Учебный проект, ВГУ ФКН, группа 15. Автор: Демин К. Д.</div></footer>
+<script>
+document.getElementById("fb").onsubmit=function(e){e.preventDefault();
+var n=document.getElementById("name").value,m=document.getElementById("email").value,t=document.getElementById("message").value;
+location.href="mailto:resumebot@example.com?subject="+encodeURIComponent("Отзыв о сайте F1 от "+n)+"&body="+encodeURIComponent(t+"\n\n"+n+" ("+m+")");
+document.getElementById("ok").textContent="Открылось почтовое приложение с готовым письмом. Нажмите «Отправить» в нём.";};
+</script>
+</body>
+</html>
